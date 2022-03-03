@@ -1,4 +1,6 @@
 .nav-container {
+  position: relative;
+  z-index: 10;
   background-color: #212121;
   height: 5.6rem;
   position: relative;
@@ -26,6 +28,12 @@
   display: flex;
   justify-content: space-between;
   min-width: 18.3rem;
+}
+
+.nav-container__content-right .menu-container {
+  position: relative;
+  z-index: 8;
+  cursor: pointer;
 }
 
 .nav-container__content-right .menu-container .menu-icon {
