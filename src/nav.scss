@@ -1,0 +1,156 @@
+.nav-container{
+    background-color: #212121;
+    height: 5.6rem;
+    position: relative;
+    padding: .6rem 1.6rem;
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.04);
+    }
+    &__content{
+
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        &-right{
+            display: flex;
+            justify-content: space-between;
+            min-width: 18.3rem;
+
+            .menu-container {
+                .menu-icon {
+                    width: 3.2rem;
+                    height: 3.2rem;
+                }
+            }
+            .logo-container{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                // margin-left: 3rem;
+                .logo-icon {
+                    height: 3.046rem;
+                    width: 3.3rem;
+                }
+                .logo-title {
+                    color: white;
+                    font-size: 2.1rem;
+                    font-weight: bold;
+                }
+            }
+        }
+        &-center{
+            min-width: calc(30rem + 15vw);
+            min-height: 4rem;
+            display: flex;
+            justify-content: center;
+            // align-items: center;
+            .search-container {
+                width: 100%;
+                height: inherit;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                form{
+                    display: block;
+                    width: 100%;
+                height: 100%;
+                    input{
+                    display: block;
+                        width: 100%;
+                        height: 100%;
+                        background-color: #121212;
+                        color: white;
+                        border: 1px solid #303030;
+                        padding: 0%;
+                    }
+                }
+                .search-button-container{
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 6.4rem;
+                    height: 4rem;
+                    background-color: rgba(255, 255, 255, 0.08);
+                    .search-icon {
+                        width: 2.4rem;
+                        height: 2.4rem;
+                    }
+                }
+            }
+            .mic-icon-container{
+                margin-left: 1.8rem;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 4rem;
+                height: 4rem;
+                background-color: black;
+                border-radius: 50%;
+                .mic-icon {
+                    width: 1.5rem;
+                    height: 2rem;
+                }
+            }
+        }
+        &-left{
+            width: 20.3rem;
+            height: 3.5rem;
+            display: flex;
+            justify-content: flex-end;
+            .video-icon-container{
+                width: 3.5rem;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    width: 3.362rem;
+                    height: 2.05rem;
+                }
+            }
+            .menu-icon-container{
+                width: 3.5rem;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    width: 2.33rem;
+                    height: 2.33rem;
+                }
+            }
+            .notification-icon-container{
+                width: 3.5rem;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    width: 2.297rem;
+                    height: 3.008rem;
+                }
+            }
+            .avi-icon-container{
+                width: 3.5rem;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    width: 3rem;
+                    height: 3rem;
+                }
+            }
+        }
+    }
+}
