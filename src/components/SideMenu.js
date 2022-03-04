@@ -1,12 +1,15 @@
 import "../css/sideMenu.css";
-import HomeIcon from "../Menu/HomeIcon.svg";
+import SideMenuLink from "./SideMenuLink";
 
 function SideMenu(props) {
+  const icons = props.icons;
+  const menuLinks = icons.map((icon) => (
+    <SideMenuLink icon={icon.icon} text={icon.text} />
+  ));
+
   return (
     <div className={props.isExpanded ? "sidebar show" : "sidebar"}>
-      <div className="sidebar__button-container">
-        <img src={HomeIcon} alt="Home Icon"></img>
-      </div>
+      <div className="sidebar__container">{menuLinks}</div>
     </div>
   );
 }

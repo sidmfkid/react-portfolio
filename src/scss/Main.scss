@@ -1,0 +1,244 @@
+.main{
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100vh;
+    background-color: #1D1D1D;
+    padding-top: 5.6rem;
+    padding-left: 7.2rem;
+    transition: all .3s ease-in-out;
+    &.menu-expanded{
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #00000063;
+    }
+    }
+    .overlay {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 0vw;
+        height: 100vh;
+        background-color: #00000000;
+        transition: all .3s ease-in-out;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: 9rem 2fr 1fr 9rem;
+        grid-template-rows: auto;
+        width: 100%;
+        height: 100%;
+        &-left {
+            position: relative;
+            z-index: 1;
+            grid-column: 2 / 3;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+
+            padding-top: 2.25rem;
+            &--video-container{
+                position: relative;
+                background-color: rgb(20, 59, 59);
+                width: 100%;
+                min-height: 52.7rem;
+                overflow-y: hidden;
+
+                iframe{
+                    display: none;
+
+                }
+                &:active, &:hover{
+                    .action-bar{
+                        opacity: 1;
+                    }
+                }
+                .action-bar{
+                    position: absolute;
+                    bottom: 0;
+                    opacity: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 4.8rem;
+                    background: linear-gradient(to bottom, #00000000, #000000 );
+                    transition: opacity .3s ease-in-out;
+                    &__content{
+                        margin: 0 1rem;
+                        position: relative;
+                        display: flex;
+                        justify-content: space-between;
+                        &-timeline{
+                            width: 100%;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 3px;
+                            background-color: #efefef4d;
+                            .buffered{
+                            width: 30%;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                height: 3px;
+                            background-color: #cbcbcb;
+                            }
+                            .currentTime {
+                                width: 20%;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                height: 3.4px;
+                            background-color: #f31010;
+                            }
+                        }
+                        &-left{
+                            min-width: 14.4rem;
+                            height: 100%;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            .time {
+                                display: block;
+
+                                height: 100%;
+                                width: fit-content;
+                                span{
+
+                                    color: white;
+                                    font-size: 1.4rem;
+                                }
+                            }
+                            .volume-container{
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                position: relative;
+                                cursor: pointer;
+                                &:active, &:hover {
+                                    .slider-container{
+                                    width: 5.2rem;
+                                    }
+                                }
+                                .slider-container{
+                                    cursor: pointer;
+                                    position: relative;
+                                    width: 0rem;
+                                    height: 4.8rem;
+                                    overflow-x: hidden;
+                                    margin-right: 6px;
+                                    transition: width .3s ease-in-out;
+                                    .slider-bar{
+                                        position: absolute;
+                                        height: .3rem;
+                                        width: 5.2rem;
+                                        top: 2.45rem;
+                                        left: 0;
+                                        background-color: #ffffff50;
+                                    }
+                                    .slider-circle {
+                                        position: absolute;
+                                        height: .3rem;
+                                        width: 1.2rem;
+                                        top: 2.45rem;
+                                        left: 0;
+                                        background-color: white;
+                                        &::after{
+                                            content: "";
+                                            position: absolute;
+                                            top: -5.15px;
+                                            left: 1rem;
+                                            border-radius: 50%;
+                                            width: 14px;
+                                            height: 14px;
+                                            background-color: white;
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &--video-title{
+                margin-top: 1rem;
+                width: 100%;
+                height: 2rem;
+                h1{
+                    width: fit-content;
+                    font-size: 2rem;
+                    color: white;
+                    font-weight: 500;
+                }
+            }
+            &--video-info{
+                margin-top: 1rem;
+                width: 100%;
+                display: flex;
+                height: 3.3rem;
+                justify-content: space-between;
+                &__stats{
+                span{
+                    display: block;
+                    width: fit-content;
+                    font-size: 1.7rem;
+                    color: #b5b5b5;
+                    font-weight: 300;
+                }
+            }
+            &__icons {
+                width: fit-content;
+                display: inline-flex;
+                .icon{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    margin-right: 6px;
+                    &:nth-last-child(1){
+                        margin-right: 0px;
+
+                    }
+                    img{
+                        transform: scale(.83);
+                        width: calc(1.6rem + .5vw);
+                        height: auto;
+                    }
+                    span{
+                        margin-left: 6px;
+                        height: fit-content;
+                        width: fit-content;
+                        font-size: calc(1rem + .5vw);
+                        color: white;
+                        font-weight: 600;
+                    }
+                }
+            }
+            }
+            &--video-border{
+                margin-top: 3.3rem;
+                width: 100%;
+                height: 1px;
+                background-color: #515151;
+            }
+        }
+        &-right {
+            grid-column: 3 / 4;
+            padding-top: 2.25rem;
+            &__content{
+            background-color: rgba(0, 0, 0, 0.067);
+                width: 100%;
+                height: 100%;
+                margin-left: 1.8rem;
+            }
+        }
+    }
+}

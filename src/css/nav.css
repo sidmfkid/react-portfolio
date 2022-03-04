@@ -1,19 +1,21 @@
 .nav-container {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 10;
   background-color: #212121;
   height: 5.6rem;
-  position: relative;
   padding: .6rem 1.6rem;
 }
 
 .nav-container::before {
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 5.6rem;
   background-color: rgba(255, 255, 255, 0.04);
 }
 
