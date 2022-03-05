@@ -12,6 +12,10 @@ import ShareIcon from "../Menu/Video/ShareIcon.svg";
 import ClipIcon from "../Menu/Video/ClipIcon.svg";
 import SaveIcon from "../Menu/Video/SaveIcon.svg";
 import MoreOptionsIcon from "../Menu/Video/MoreOptionsIcon.svg";
+import VerifiedIcon from "../Menu/Video/VerifiedIcon.svg";
+import SortByIcon from "../Menu/Video/SortByIcon.svg";
+import DownIcon from "../Menu/Video/DownIcon.svg";
+import SidmfkidAvi from "../images/avis/sidmfkid-avi.jpg";
 function Main(props) {
   return (
     <main className={props.menuExpanded ? "main menu-expanded" : "main"}>
@@ -88,7 +92,92 @@ function Main(props) {
             </div>
           </div>
           <div className="main__content-left--video-border"></div>
+          <div className="main__content-left--video-channel">
+            <div className="channel-info-container">
+              <div className="avi-container">
+                <img src={SidmfkidAvi} className="avi" alt="Avi"></img>
+              </div>
+              <div className="channel-details-container">
+                <h2 className="channel-name">
+                  Sidmfkid
+                  <span>
+                    <img src={VerifiedIcon} alt="Verified Icon"></img>
+                  </span>
+                </h2>
+                <span className="channel-subs">100B subscribers</span>
+              </div>
+            </div>
+            <div className="channel-subscribe-container">
+              <button className="subscribe-btn">Subscribe</button>
+            </div>
+          </div>
+          <div className="main__content-left--video-description">
+            <p className="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc,
+              tempus, feugiat potenti neque nullam faucibus purus faucibus.
+              Risus vulputate sapien, faucibus enim non.
+            </p>
+            <span className="show-description">SHOW MORE</span>
+          </div>
+          <div className="main__content-left--video-border-2"></div>
+          <div className="main__content-left--video-comments">
+            <div className="main__content-left--video-comments-heading">
+              <span>225 Comments</span>
+              <span className="sort-icon">
+                <img src={SortByIcon} alt="Sort By Icon"></img>Sort By
+              </span>
+            </div>
+            <div className="main__content-left--video-comments-new-comment">
+              <div className="avi">
+                <img src={SidmfkidAvi} alt="Profile Avi"></img>
+              </div>
+              <div className="input-container">
+                <input
+                  className="input"
+                  type="text"
+                  for="comment"
+                  placeholder="New Comment Here"
+                ></input>
+              </div>
+            </div>
+            <div className="main__content-left--video-comments-comment">
+              <div className="avi-container">
+                <img src={SidmfkidAvi} alt="Profile Avi"></img>
+              </div>
+              <div className="comment-info-container">
+                <div className="username-date">
+                  <span>Darius K</span>
+                  <span>1 year ago</span>
+                </div>
+                <div className="comment">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Fermentum massa tellus ut turpis pharetra nulla tortor
+                    tortor. Malesuada vel viverra bibendum cursus nulla pharetra
+                    molestie.
+                  </p>
+                </div>
+
+                <div className="like-dislike-container">
+                  <div className="like-container">
+                    <img src={LikeIcon} alt="Like Icon"></img>
+                    <span>1.2K</span>
+                  </div>
+                  <div className="dislike-container">
+                    <img src={DislikeIcon} alt="Disike Icon"></img>
+                  </div>
+                </div>
+                <div className="view-replies-container">
+                  <div className="icon-container">
+                    <img src={DownIcon} alt="Profile Avi"></img>
+                  </div>
+                  <span>View 21 Replies</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div className="main__content-right">
           <div className="main__content-right__content"></div>
         </div>

@@ -2,8 +2,24 @@
     padding: 0;
     margin: 0;
     font-size: 62.5%;
-    box-sizing: border-box
+    box-sizing: border-box;
+}
+span,p,h1,h2,h3,h4,h5,h6 {
+    font-size: 1rem;
+    color: white;
 }
 body {
     margin: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+#root {
+    box-sizing: border-box;
+    background-color: #1b1b1b;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+
 }
