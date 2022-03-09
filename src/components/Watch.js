@@ -15,8 +15,34 @@ import MoreOptionsIcon from "../Menu/Video/MoreOptionsIcon.svg";
 import VerifiedIcon from "../Menu/Video/VerifiedIcon.svg";
 import SortByIcon from "../Menu/Video/SortByIcon.svg";
 import DownIcon from "../Menu/Video/DownIcon.svg";
+import ChevronRightIcon from "../Menu/ChevronRightIcon.svg";
+import ChevronLeftIcon from "../Menu/ChevronLeftIcon.svg";
 import SidmfkidAvi from "../images/avis/sidmfkid-avi.jpg";
-function Main(props) {
+import SpotifyThumbnail1 from "../images/thumbnails/spotifyThumbnail1.jpg";
+import Comment from "./Comment";
+import Pill from "./Pill";
+import VideoCard from "./VideoCard";
+import { useRef } from "react";
+
+function Watch(props) {
+  const quickBar = useRef(null);
+  // const scrollLeft = document.querySelector('#scrollLeft');
+  // const scrollRight = document.querySelector('#scrollRight');
+
+  function scrollSmoothRight(e) {
+    console.log(quickBar, e.target);
+    quickBar.current.scroll({ top: 0, left: 0, behavior: "smooth" });
+  }
+  function scrollSmoothLeft(e) {
+    console.log(quickBar, e.target);
+
+    quickBar.current.scroll({
+      top: 0,
+      left: quickBar.current.scrollLeftMax,
+      behavior: "smooth",
+    });
+  }
+
   return (
     <main className={props.menuExpanded ? "main menu-expanded" : "main"}>
       <div className="overlay"></div>
@@ -108,7 +134,7 @@ function Main(props) {
               </div>
             </div>
             <div className="channel-subscribe-container">
-              <button className="subscribe-btn">Subscribe</button>
+              <button className="subscribe-btn">SUBSCRIBE</button>
             </div>
           </div>
           <div className="main__content-left--video-description">
@@ -140,50 +166,126 @@ function Main(props) {
                 ></input>
               </div>
             </div>
-            <div className="main__content-left--video-comments-comment">
-              <div className="avi-container">
-                <img src={SidmfkidAvi} alt="Profile Avi"></img>
-              </div>
-              <div className="comment-info-container">
-                <div className="username-date">
-                  <span>Darius K</span>
-                  <span>1 year ago</span>
-                </div>
-                <div className="comment">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Fermentum massa tellus ut turpis pharetra nulla tortor
-                    tortor. Malesuada vel viverra bibendum cursus nulla pharetra
-                    molestie.
-                  </p>
-                </div>
-
-                <div className="like-dislike-container">
-                  <div className="like-container">
-                    <img src={LikeIcon} alt="Like Icon"></img>
-                    <span>1.2K</span>
-                  </div>
-                  <div className="dislike-container">
-                    <img src={DislikeIcon} alt="Disike Icon"></img>
-                  </div>
-                </div>
-                <div className="view-replies-container">
-                  <div className="icon-container">
-                    <img src={DownIcon} alt="Profile Avi"></img>
-                  </div>
-                  <span>View 21 Replies</span>
-                </div>
-              </div>
-            </div>
+            <Comment
+              SidmfkidAvi={SidmfkidAvi}
+              LikeIcon={LikeIcon}
+              DislikeIcon={DislikeIcon}
+              DownIcon={DownIcon}
+            />
+            <Comment
+              SidmfkidAvi={SidmfkidAvi}
+              LikeIcon={LikeIcon}
+              DislikeIcon={DislikeIcon}
+              DownIcon={DownIcon}
+            />
+            <Comment
+              SidmfkidAvi={SidmfkidAvi}
+              LikeIcon={LikeIcon}
+              DislikeIcon={DislikeIcon}
+              DownIcon={DownIcon}
+            />
+            <Comment
+              SidmfkidAvi={SidmfkidAvi}
+              LikeIcon={LikeIcon}
+              DislikeIcon={DislikeIcon}
+              DownIcon={DownIcon}
+            />
           </div>
         </div>
 
         <div className="main__content-right">
-          <div className="main__content-right__content"></div>
+          <div className="main__content-right__content">
+            <div className="main__content-right__content--quick-wrapper">
+              <div
+                onClick={scrollSmoothRight.bind(this)}
+                id="scrollLeft"
+                className="chevron-left"
+              >
+                <img src={ChevronLeftIcon} alt="Chevron Left Icon"></img>
+              </div>
+              <div
+                ref={quickBar}
+                className="main__content-right__content--quick-bar"
+              >
+                <div className="main__content-right__content--quick-bar__pill-container">
+                  <form id="quickBar">
+                    <Pill pillTitle="All" />
+                    <Pill pillTitle="Music" />
+                    <Pill pillTitle="Development" />
+                    <Pill pillTitle="Design" />
+                    <Pill pillTitle="Advertising" />
+                  </form>
+                </div>
+              </div>
+              <div
+                onClick={scrollSmoothLeft.bind(this)}
+                id="scrollRight"
+                className="chevron-right"
+              >
+                <img src={ChevronRightIcon} alt="Chevron Right Icon"></img>
+              </div>
+            </div>
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+            <VideoCard
+              SpotifyThumbnail1={SpotifyThumbnail1}
+              VerifiedIcon={VerifiedIcon}
+            />
+          </div>
         </div>
       </div>
     </main>
   );
 }
 
-export default Main;
+export default Watch;

@@ -3,8 +3,10 @@ import SideMenuLink from "./SideMenuLink";
 
 function SideMenu(props) {
   const icons = props.icons;
+  const currentPath = window.location.pathname.replace("/", "");
+  console.log(currentPath);
   const menuLinks = icons.map((icon) => (
-    <SideMenuLink icon={icon.icon} text={icon.text} />
+    <SideMenuLink currentPath={currentPath} icon={icon.icon} text={icon.text} />
   ));
 
   return (

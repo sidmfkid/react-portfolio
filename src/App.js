@@ -1,12 +1,14 @@
 import { useState } from "react";
 import SideMenu from "./components/SideMenu";
-import Main from "./components/Main";
+import Watch from "./components/Watch";
 import Nav from "./components/Nav.js";
+import Home from "./components/Home.js";
 import HomeIcon from "./Menu/HomeIcon.svg";
 import MusicIcon from "./Menu/MusicIcon.svg";
 import BracketIcon from "./Menu/BracketIcon.svg";
 import AdobeIcon from "./Menu/AdobeIcon.svg";
 import AdsIcon from "./Menu/AdIcon.svg";
+import { Route, Routes } from "react-router-dom";
 import "./css/App.css";
 
 function App() {
@@ -30,7 +32,14 @@ function App() {
     <>
       <Nav isToggled={isToggled} menuToggler={toggle} />
       <SideMenu isExpanded={isToggled} icons={icons} />
-      <Main menuExpanded={isToggled} />
+      <Routes>
+        <Route
+          exact
+          path="/watch"
+          element={<Watch menuExpanded={isToggled} />}
+        />
+        <Route path="/" element={<Home menuExpanded={isToggled} />} />
+      </Routes>
     </>
   );
 }

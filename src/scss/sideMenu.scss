@@ -44,6 +44,9 @@
     justify-content: center;
     align-items: center;
     transition: width .2s ease-in-out;
+    &.active {
+        background-color: #2c2c2c;
+    }
         &--homeIcon{
             display: block;
             margin: 0 auto;
