@@ -2,7 +2,7 @@ function SideMenuLink(props) {
   console.log(props.currentPath, props.text);
   return (
     <a
-      href="/home"
+      href="/"
       className={
         props.currentPath === props.text.toLowerCase()
           ? "sidebar__container-button active"

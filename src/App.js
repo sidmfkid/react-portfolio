@@ -9,6 +9,7 @@ import BracketIcon from "./Menu/BracketIcon.svg";
 import AdobeIcon from "./Menu/AdobeIcon.svg";
 import AdsIcon from "./Menu/AdIcon.svg";
 import { Route, Routes } from "react-router-dom";
+
 import "./css/App.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
     { icon: AdobeIcon, text: "Design" },
     { icon: AdsIcon, text: "Ads" },
   ];
+
   const toggle = () => {
     menuToggler((prev) => !prev);
     console.log(isToggled);

@@ -44,7 +44,7 @@ const seedPosts = [
     title: "How I got 3M Plays",
     datePosted: "Yesterday",
     views: "134000",
-    channel: "622840dae50fae173afcd89b",
+    channel: "6228fbe0cdb7a9adca4a62e3",
     images: [
       "https://cdn.shopify.com/s/files/1/0586/2667/0763/files/spotifyThumbnail1.jpg?v=1646836253",
     ],
@@ -53,12 +53,19 @@ const seedPosts = [
     title: "Watch Me Speed Run On Git!",
     datePosted: "December 18th, 2021",
     views: "734000",
-    channel: "622840dae50fae173afcd89e",
+    channel: "6228fbe0cdb7a9adca4a62e6",
     images: [
       "https://cdn.shopify.com/s/files/1/0586/2667/0763/files/githubThumbnail1.jpg?v=1646836253",
     ],
   },
 ];
+
+const channel = new Channel({
+  _id: new mongoose.Types.ObjectId(),
+  name: "Sidmfkid",
+  subscribers: 40000,
+  image: "link",
+});
 
 async function connectDB() {
   await mongoose.connect(dbUrl, {
@@ -72,10 +79,10 @@ db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("open"));
 
 const seedDB = async () => {
-  await Channel.deleteMany({});
-  await Post.deleteMany({});
-  await Channel.insertMany(seedChannels);
-  await Post.insertMany({ seedPosts });
+  //   await Channel.deleteMany({});
+  //   await Post.deleteMany({});
+  //   await Channel.insertMany(seedChannels);
+  //   await Post.insertMany(seedPosts);
 };
 
 seedDB().then(() => {
