@@ -15,33 +15,16 @@ import MoreOptionsIcon from "../Menu/Video/MoreOptionsIcon.svg";
 import VerifiedIcon from "../Menu/Video/VerifiedIcon.svg";
 import SortByIcon from "../Menu/Video/SortByIcon.svg";
 import DownIcon from "../Menu/Video/DownIcon.svg";
-import ChevronRightIcon from "../Menu/ChevronRightIcon.svg";
-import ChevronLeftIcon from "../Menu/ChevronLeftIcon.svg";
 import SidmfkidAvi from "../images/avis/sidmfkid-avi.jpg";
 import SpotifyThumbnail1 from "../images/thumbnails/spotifyThumbnail1.jpg";
 import Comment from "./Comment";
-import Pill from "./Pill";
+import QuickBar from "./QuickBar";
 import VideoCard from "./VideoCard";
-import { useRef } from "react";
+// import { useRef } from "react";
 
 function Watch(props) {
-  const quickBar = useRef(null);
   // const scrollLeft = document.querySelector('#scrollLeft');
   // const scrollRight = document.querySelector('#scrollRight');
-
-  function scrollSmoothRight(e) {
-    console.log(quickBar, e.target);
-    quickBar.current.scroll({ top: 0, left: 0, behavior: "smooth" });
-  }
-  function scrollSmoothLeft(e) {
-    console.log(quickBar, e.target);
-
-    quickBar.current.scroll({
-      top: 0,
-      left: quickBar.current.scrollLeftMax,
-      behavior: "smooth",
-    });
-  }
 
   return (
     <main className={props.menuExpanded ? "main menu-expanded" : "main"}>
@@ -195,36 +178,7 @@ function Watch(props) {
 
         <div className="main__content-right">
           <div className="main__content-right__content">
-            <div className="main__content-right__content--quick-wrapper">
-              <div
-                onClick={scrollSmoothRight.bind(this)}
-                id="scrollLeft"
-                className="chevron-left"
-              >
-                <img src={ChevronLeftIcon} alt="Chevron Left Icon"></img>
-              </div>
-              <div
-                ref={quickBar}
-                className="main__content-right__content--quick-bar"
-              >
-                <div className="main__content-right__content--quick-bar__pill-container">
-                  <form id="quickBar">
-                    <Pill pillTitle="All" />
-                    <Pill pillTitle="Music" />
-                    <Pill pillTitle="Development" />
-                    <Pill pillTitle="Design" />
-                    <Pill pillTitle="Advertising" />
-                  </form>
-                </div>
-              </div>
-              <div
-                onClick={scrollSmoothLeft.bind(this)}
-                id="scrollRight"
-                className="chevron-right"
-              >
-                <img src={ChevronRightIcon} alt="Chevron Right Icon"></img>
-              </div>
-            </div>
+            <QuickBar />
             <VideoCard
               SpotifyThumbnail1={SpotifyThumbnail1}
               VerifiedIcon={VerifiedIcon}

@@ -19,7 +19,9 @@
             grid-gap: 2.2rem;
             &--card{
                 min-height: 27.6rem;
-                justify-content: start;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
                 flex-wrap: wrap;
                 .image-container{
                     width: 100%;
@@ -72,7 +74,7 @@ margin-left: 1rem;
                 }
                 .post-details{
                     span{
-                        font-size: 1.2rem;
+                        font-size: 1.8rem;
                         color: #a1a1a1;
                         font-weight: 700;
                     }

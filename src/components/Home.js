@@ -14,6 +14,7 @@ import sidAvi from "../images/avis/sidAvi.png";
 import btcAvi from "../images/avis/btcAvi.png";
 import githubAvi from "../images/avis/githubAvi.png";
 import youAreAvi from "../images/avis/youAreAvi.png";
+import QuickBar from "../components/QuickBar";
 
 function Home(props) {
   const cardContent = [
@@ -86,6 +87,7 @@ function Home(props) {
   ));
   return (
     <div className="home">
+      <QuickBar />
       <div className="home__content">
         <div className="home__content-grid">{cards}</div>
       </div>

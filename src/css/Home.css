@@ -25,7 +25,9 @@
 
 .home__content-grid--card {
   min-height: 27.6rem;
-  justify-content: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -87,7 +89,7 @@
 }
 
 .home__content-grid--card .info-container .post-details span {
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   color: #a1a1a1;
   font-weight: 700;
 }
