@@ -5,6 +5,8 @@
   justify-content: flex-start;
   align-items: center;
   background-color: #2a2a2a;
+  border-top: 1px solid var(--main-border-color);
+  border-bottom: 1px solid var(--main-border-color);
 }
 
 .home .quick-wrapper::before {
@@ -48,7 +50,7 @@
   width: 100%;
   margin-top: 0;
   overflow-x: scroll;
-  border-top: 1px solid var(--main-border-color);
+  border-top: 0px solid var(--main-border-color);
   scrollbar-width: none;
   -ms-overflow-style: none;
 }

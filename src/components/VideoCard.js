@@ -2,15 +2,15 @@ function VideoCard(props) {
   return (
     <div className="main__content-right__content--thumb-wrapper">
       <div className="thumbnail-wrapper">
-        <img src={props.SpotifyThumbnail1} alt="Thumbnail For Video"></img>
+        <img src={props.postImage} alt="Thumbnail For Video"></img>
       </div>
       <div className="info-wrapper">
-        <h3 className="video-title">Advertising For 24K Nail Spa</h3>
+        <h3 className="video-title">{props.title}</h3>
         <div className="channel-name">
-          <span>24K Nail Spa</span>
+          <span>{props.channel}</span>
           <img src={props.VerifiedIcon} alt="Verified Icon"></img>
         </div>
-        <span className="video-details">50K views • April ‘21 - Feb ‘22</span>
+        <span className="video-details">{props.info}</span>
       </div>
     </div>
   );

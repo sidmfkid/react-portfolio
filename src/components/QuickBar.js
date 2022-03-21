@@ -6,6 +6,35 @@ import Pill from "./Pill";
 
 function QuickBar(props) {
   const quickBar = useRef(null);
+  const cards = props.cards;
+
+  function uniqueTags(val, index, self) {
+    return self.indexOf(val) === index;
+  }
+  const cardTags = cards.map((card) => card.tag);
+  const allTags = cardTags.filter(uniqueTags);
+
+  const filterChangeHandler = (event) => {
+    props.onChangeHandler(event.target.value);
+  };
+
+  const allcards = allTags.map((tag) => {
+    return (
+      <div className="pill-wrapper">
+        <input
+          onChange={filterChangeHandler}
+          name="quickBarFilter"
+          type="radio"
+          value={tag}
+          id={"pill" + tag}
+        ></input>
+        <label className="pill" for={"pill" + tag}>
+          <span>{tag}</span>
+        </label>
+      </div>
+    );
+  });
+  console.log(allcards, cards);
 
   function scrollSmoothRight(e) {
     console.log(quickBar, e.target);
@@ -20,6 +49,7 @@ function QuickBar(props) {
       behavior: "smooth",
     });
   }
+
   return (
     <div className="quick-wrapper">
       <div
@@ -31,12 +61,20 @@ function QuickBar(props) {
       </div>
       <div ref={quickBar} className="quick-bar">
         <div className="quick-bar__pill-container">
-          <form id="quickBar">
-            <Pill pillTitle="All" />
-            <Pill pillTitle="Music" />
-            <Pill pillTitle="Development" />
-            <Pill pillTitle="Design" />
-            <Pill pillTitle="Advertising" />
+          <form value={props.selected} id="quickBar">
+            <div className="pill-wrapper">
+              <input
+                onChange={filterChangeHandler}
+                name="quickBarFilter"
+                type="radio"
+                value="All"
+                id="pillAll"
+              ></input>
+              <label className="pill" for="pillAll">
+                <span>All</span>
+              </label>
+            </div>
+            {allcards}
           </form>
         </div>
       </div>

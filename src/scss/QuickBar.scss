@@ -9,6 +9,9 @@
             align-items: center;
             background-color: #2a2a2a;
             // z-index: 1;
+            border-top: 1px solid var(--main-border-color);
+            border-bottom: 1px solid var(--main-border-color);
+
             &::before{
                 content: "";
                 position: absolute;
@@ -46,7 +49,7 @@
             width: 100%;
             margin-top: 0;
             overflow-x: scroll;
-            border-top: 1px solid var(--main-border-color);
+            border-top: 0px solid var(--main-border-color);
             scrollbar-width: none;
             -ms-overflow-style: none;
             &::-webkit-scrollbar { 

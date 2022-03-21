@@ -18,6 +18,7 @@
             grid-template-rows: auto-fill;
             grid-gap: 2.2rem;
             &--card{
+                cursor: pointer;
                 min-height: 27.6rem;
                 display: flex;
                 flex-direction: column;

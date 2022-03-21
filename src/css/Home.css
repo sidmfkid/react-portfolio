@@ -24,6 +24,7 @@
 }
 
 .home__content-grid--card {
+  cursor: pointer;
   min-height: 27.6rem;
   display: flex;
   flex-direction: column;

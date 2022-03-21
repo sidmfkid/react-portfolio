@@ -1,10 +1,12 @@
 function SideMenuLink(props) {
   console.log(props.currentPath, props.text);
+
   return (
     <a
       href="/"
       className={
-        props.currentPath === props.text.toLowerCase()
+        props.currentPath === props.text.toLowerCase() ||
+        (props.currentPath === "" && props.text.toLowerCase() === "home")
           ? "sidebar__container-button active"
           : "sidebar__container-button"
       }

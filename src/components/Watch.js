@@ -20,9 +20,57 @@ import SpotifyThumbnail1 from "../images/thumbnails/spotifyThumbnail1.jpg";
 import Comment from "./Comment";
 import QuickBar from "./QuickBar";
 import VideoCard from "./VideoCard";
-// import { useRef } from "react";
+import { useState } from "react";
 
 function Watch(props) {
+  const cardContent = props.cardContent;
+  const [filteredTag, setFilter] = useState("");
+  const filterChangeHandler = (selectedFilter) => {
+    setFilter(selectedFilter);
+  };
+
+  const filteredCards = cardContent.filter((card) => {
+    return card.tag === filteredTag;
+  });
+  let cards = cardContent.map((card) => (
+    <VideoCard
+      key={card.title}
+      title={card.title}
+      channel={card.channel}
+      info={card.info}
+      postImage={card.postImage}
+      channelImage={card.channelImage}
+      tag={card.tag}
+    />
+  ));
+
+  if (filteredTag) {
+    cards = filteredCards.map((card) => (
+      <VideoCard
+        key={card.title}
+        title={card.title}
+        channel={card.channel}
+        info={card.info}
+        postImage={card.postImage}
+        channelImage={card.channelImage}
+        tag={card.tag}
+      />
+    ));
+  }
+
+  if (filteredTag === "All") {
+    cards = cardContent.map((card) => (
+      <VideoCard
+        key={card.title}
+        title={card.title}
+        channel={card.channel}
+        info={card.info}
+        postImage={card.postImage}
+        channelImage={card.channelImage}
+        tag={card.tag}
+      />
+    ));
+  }
   // const scrollLeft = document.querySelector('#scrollLeft');
   // const scrollRight = document.querySelector('#scrollRight');
 
@@ -178,63 +226,12 @@ function Watch(props) {
 
         <div className="main__content-right">
           <div className="main__content-right__content">
-            <QuickBar />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
+            <QuickBar
+              key="QuickBarWatch"
+              onChangeHandler={filterChangeHandler}
+              cards={cardContent}
             />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
-            <VideoCard
-              SpotifyThumbnail1={SpotifyThumbnail1}
-              VerifiedIcon={VerifiedIcon}
-            />
+            {cards}
           </div>
         </div>
       </div>
