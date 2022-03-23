@@ -1,7 +1,9 @@
 import "../css/Home.css";
+import "../css/Modal.css";
 import HomeCard from "./HomeCard";
 import QuickBar from "../components/QuickBar";
 import Modal from "../components/UI/Modal";
+import ArrowIcon from "../Menu/arrowIcon.svg";
 
 import { useRef, useState } from "react";
 
@@ -58,15 +60,19 @@ function Home(props) {
 
   console.log(home);
   return (
-    <><Modal /><div ref={home} className="home">
-      <QuickBar
-        key="QuickBarHome"
-        cards={cardContent}
-        onChangeHandler={filterChangeHandler} />
-      <div className="home__content">
-        <div className="home__content-grid">{cards}</div>
+    <>
+      <Modal ArrowIcon={ArrowIcon} />
+      <div ref={home} className="home">
+        <QuickBar
+          key="QuickBarHome"
+          cards={cardContent}
+          onChangeHandler={filterChangeHandler}
+        />
+        <div className="home__content">
+          <div className="home__content-grid">{cards}</div>
+        </div>
       </div>
-    </div></>
+    </>
   );
 }
 

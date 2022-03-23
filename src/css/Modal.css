@@ -1,0 +1,45 @@
+#overlay-root {
+  position: relative;
+}
+
+.modal {
+  position: absolute;
+  top: 40vh;
+  left: 40vw;
+  z-index: 100;
+  height: auto;
+  max-width: 52rem;
+  background-color: #3B3B3B;
+  padding: 2.4rem 3.2rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 4px 13px;
+  border-radius: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+}
+
+.modal-heading span {
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+.modal-subheading span {
+  font-size: 3.6rem;
+  font-weight: 400;
+}
+
+.modal-button button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+}
+
+.modal-button button span {
+  font-size: 3.2rem;
+  display: block;
+  margin-right: 1rem;
+}
+/*# sourceMappingURL=Modal.css.map */

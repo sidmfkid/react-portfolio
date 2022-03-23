@@ -1,5 +1,5 @@
 const Card = (props) => {
-  return <div>{props.children}</div>;
+  return <div className="modal">{props.children}</div>;
 };
 
 export default Card;
