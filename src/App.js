@@ -120,6 +120,7 @@ function App() {
 
   return (
     <>
+   
       <Nav isToggled={isToggled} menuToggler={toggle} />
       <SideMenu isExpanded={isToggled} icons={icons} />
       <Routes>
