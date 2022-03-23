@@ -1,5 +1,15 @@
-#overlay-root {
+#overlay-root, #backdrop-root {
   position: relative;
+}
+
+.back-drop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.184);
+  z-index: 20;
 }
 
 .modal {
@@ -11,10 +21,14 @@
   max-width: 52rem;
   background-color: #3B3B3B;
   padding: 2.4rem 3.2rem;
-  box-shadow: rgba(0, 0, 0, 0.25) 0 4px 13px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 4px 13px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0 4px 13px;
   border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 1.8rem;
 }
 
@@ -30,9 +44,15 @@
 
 .modal-button button {
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: none;
   border: none;
 }
