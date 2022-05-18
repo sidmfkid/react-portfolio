@@ -11,7 +11,7 @@ const MongoStore = require("connect-mongo");
 const Channel = require("./models/channel");
 const Post = require("./models/post");
 const port = process.env.PORT || 80;
-app.use(cors());
+// app.use(cors());
 const dbUrl = "mongodb://localhost:27017/portfolio" || process.env.DB_URL;
 
 connectDB().catch((err) => console.log(err));
