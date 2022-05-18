@@ -4,7 +4,6 @@ import HomeCard from "./HomeCard";
 import QuickBar from "../components/QuickBar";
 import Modal from "../components/UI/Modal";
 import ArrowIcon from "../Menu/arrowIcon.svg";
-
 import { useRef, useState } from "react";
 
 function Home(props) {
@@ -15,6 +14,8 @@ function Home(props) {
   const [filteredTag, setFilter] = useState("");
   const handleModalClick = props.handleModalClick;
   const currentStep = props.currentStep;
+  const handleIntroState = props.handleIntroState;
+  const isIntroFinished = props.isIntroFinished;
 
   // Filter Video Cards
   const filterChangeHandler = (selectedFilter) => {
@@ -67,6 +68,9 @@ function Home(props) {
   return (
     <>
       <Modal
+        cookies={props.cookies}
+        handleIntroState={handleIntroState}
+        isIntroFinished={isIntroFinished}
         step={currentStep}
         ArrowIcon={ArrowIcon}
         onModalClick={handleModalClick}

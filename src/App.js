@@ -24,6 +24,7 @@ import githubAvi from "./images/avis/githubAvi.png";
 import youAreAvi from "./images/avis/youAreAvi.png";
 import { Route, Routes } from "react-router-dom";
 import { useRef } from "react";
+import { useCookies } from "react-cookie";
 
 import "./css/App.css";
 
@@ -31,7 +32,8 @@ function App() {
   const [isToggled, menuToggler] = useState(false);
   const [isTagToggled, tagToggler] = useState("");
   const [currentStep, setStep] = useState(0);
-
+  const [isIntroFinished, setIntroState] = useState(false);
+  const [cookies, setCookie] = useCookies(["isIntroFinished"]);
   const steps = [
     {
       heading: "Welcome to Sidtube",
@@ -76,7 +78,21 @@ function App() {
       step: steps[Number(event.target.attributes[0].value) + 1],
       index: Number(event.target.attributes[0].value) + 1,
     });
-    console.log(currentStep, event, nextStep);
+    console.log(currentStep.index, event, nextStep);
+    handleIntroState();
+    console.log(isIntroFinished);
+  };
+
+  const handleIntroState = (e) => {
+    if (currentStep.index > 5 || e.target.className === "modal-exit-button") {
+      setCookie("isIntroFinished", true, {
+        path: "/",
+        // expires: Number(Date.now() + 1000 * 60 * 60 * 24 * 7),
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+        sameSite: true,
+      });
+      setIntroState(true);
+    }
   };
 
   const icons = [
@@ -220,6 +236,9 @@ function App() {
           path="/"
           element={
             <Home
+              cookies={cookies}
+              handleIntroState={handleIntroState}
+              isIntroFinished={isIntroFinished}
               handleModalClick={handleModalClick}
               currentStep={currentStep}
               cardContent={cardContent}

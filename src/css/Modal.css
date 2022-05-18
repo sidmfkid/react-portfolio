@@ -75,4 +75,49 @@
   position: relative;
   z-index: -1;
 }
+
+.modal-exit {
+  position: absolute;
+  z-index: 2;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.modal-exit-button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.modal-exit-button span {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.modal-exit-button span::after, .modal-exit-button span::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+}
+
+.modal-exit-button span::after {
+  transform: rotate(45deg);
+}
+
+.modal-exit-button span::before {
+  transform: rotate(-45deg);
+}
 /*# sourceMappingURL=Modal.css.map */

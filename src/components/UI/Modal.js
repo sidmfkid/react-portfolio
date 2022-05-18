@@ -3,17 +3,32 @@ import ReactDOM from "react-dom";
 import React from "react";
 
 const Backdrop = (props) => {
+  const isIntroFinished = props.isIntroFinished;
+
   return (
     <div
-      className={props.step.index > 6 ? "back-drop hide" : "back-drop"}
+      className={
+        props.cookies.isIntroFinished === "true" ||
+        props.step.index > 6 ||
+        isIntroFinished === true
+          ? "back-drop hide"
+          : "back-drop"
+      }
     ></div>
   );
 };
 
 const ModalOverlay = (props) => {
   console.log(props.position);
+  const handleIntroState = props.handleIntroState;
+  const isIntroFinished = props.isIntroFinished;
   const modalClick = (e) => {
     props.onModalClick(e);
+    handleIntroState(e);
+  };
+
+  const exitModal = (e) => {
+    handleIntroState(e);
   };
 
   let cardModal = (
@@ -30,12 +45,13 @@ const ModalOverlay = (props) => {
           <img src={props.ArrowIcon} alt="Next Button"></img>
         </button>
       </div>
+      <div className="modal-exit">
+        <button className="modal-exit-button" onClick={exitModal}>
+          <span></span>
+        </button>
+      </div>
     </Card>
   );
-
-  if (props.step.index === null || props.step.index > 6) {
-    cardModal = "";
-  }
 
   if (props.step.index > 0 && props.step.index <= 6) {
     cardModal = (
@@ -52,22 +68,45 @@ const ModalOverlay = (props) => {
             <img src={props.ArrowIcon} alt="Next Button"></img>
           </button>
         </div>
+        <div className="modal-exit">
+          <button className="modal-exit-button" onClick={exitModal}>
+            <span></span>
+          </button>
+        </div>
       </Card>
     );
+  }
+
+  if (
+    props.cookies.isIntroFinished === "true" ||
+    isIntroFinished === true ||
+    props.step.index === null ||
+    props.step.index > 6
+  ) {
+    cardModal = "";
   }
 
   return <>{cardModal}</>;
 };
 
 const Modal = (props) => {
+  const handleIntroState = props.handleIntroState;
+  const isIntroFinished = props.isIntroFinished;
   return (
     <React.Fragment>
       {ReactDOM.createPortal(
-        <Backdrop step={props.step} />,
+        <Backdrop
+          cookies={props.cookies}
+          isIntroFinished={isIntroFinished}
+          step={props.step}
+        />,
         document.getElementById("backdrop-root")
       )}
       {ReactDOM.createPortal(
         <ModalOverlay
+          cookies={props.cookies}
+          handleIntroState={handleIntroState}
+          isIntroFinished={isIntroFinished}
           position={props.position}
           onModalClick={props.onModalClick}
           ArrowIcon={props.ArrowIcon}
