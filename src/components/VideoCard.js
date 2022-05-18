@@ -1,6 +1,32 @@
 function VideoCard(props) {
+  const handleize = function (str) {
+    str = str.toLowerCase();
+
+    var toReplace = ['"', "'", "\\", "(", ")", "[", "]"];
+
+    // For the old browsers
+    for (var i = 0; i < toReplace.length; ++i) {
+      str = str.replace(toReplace[i], "");
+    }
+
+    str = str.replace(/\W+/g, "-");
+
+    if (str.charAt(str.length - 1) == "-") {
+      str = str.replace(/-+\z/, "");
+    }
+
+    if (str.charAt(0) == "-") {
+      str = str.replace(/\A-+/, "");
+    }
+
+    return str;
+  };
+
   return (
-    <div className="main__content-right__content--thumb-wrapper">
+    <a
+      href={`/watch/${handleize(props.title)}`}
+      className="main__content-right__content--thumb-wrapper"
+    >
       <div className="thumbnail-wrapper">
         <img src={props.postImage} alt="Thumbnail For Video"></img>
       </div>
@@ -12,7 +38,7 @@ function VideoCard(props) {
         </div>
         <span className="video-details">{props.info}</span>
       </div>
-    </div>
+    </a>
   );
 }
 

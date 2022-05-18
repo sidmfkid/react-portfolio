@@ -21,6 +21,7 @@ import Comment from "./Comment";
 import QuickBar from "./QuickBar";
 import VideoCard from "./VideoCard";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 function Watch(props) {
   const cardContent = props.cardContent;
@@ -28,6 +29,11 @@ function Watch(props) {
   const filterChangeHandler = (selectedFilter) => {
     setFilter(selectedFilter);
   };
+
+  let params = useParams();
+  const [currentContent] = cardContent.filter((card) => {
+    return props.handleize(card.title) === params.Id;
+  });
 
   const filteredCards = cardContent.filter((card) => {
     return card.tag === filteredTag;
@@ -41,6 +47,7 @@ function Watch(props) {
       postImage={card.postImage}
       channelImage={card.channelImage}
       tag={card.tag}
+      VerifiedIcon={VerifiedIcon}
     />
   ));
 
@@ -54,6 +61,7 @@ function Watch(props) {
         postImage={card.postImage}
         channelImage={card.channelImage}
         tag={card.tag}
+        VerifiedIcon={VerifiedIcon}
       />
     ));
   }
@@ -68,9 +76,15 @@ function Watch(props) {
         postImage={card.postImage}
         channelImage={card.channelImage}
         tag={card.tag}
+        VerifiedIcon={VerifiedIcon}
       />
     ));
   }
+
+  const strArr = currentContent.info.split("•");
+  const str = strArr[0].replace(" views ", "");
+  const views = str.trim();
+  console.log(views);
   // const scrollLeft = document.querySelector('#scrollLeft');
   // const scrollRight = document.querySelector('#scrollRight');
 
@@ -116,16 +130,16 @@ function Watch(props) {
             </div>
           </div>
           <div className="main__content-left--video-title">
-            <h1>MUSIC STREAMING STATS & MORE</h1>
+            <h1>{currentContent.title}</h1>
           </div>
           <div className="main__content-left--video-info">
             <div className="main__content-left--video-info__stats">
-              <span>50K views • April ‘21 - Feb ‘22</span>
+              <span>{currentContent.info}</span>
             </div>
             <div className="main__content-left--video-info__icons">
               <div className="icon">
                 <img src={LikeIcon} alt="Like Icon"></img>
-                <span>3.5K</span>
+                <span>{views}</span>
               </div>
               <div className="icon">
                 <img src={DislikeIcon} alt="Dislike Icon"></img>
@@ -152,11 +166,15 @@ function Watch(props) {
           <div className="main__content-left--video-channel">
             <div className="channel-info-container">
               <div className="avi-container">
-                <img src={SidmfkidAvi} className="avi" alt="Avi"></img>
+                <img
+                  src={currentContent.channelImage}
+                  className="avi"
+                  alt="Avi"
+                ></img>
               </div>
               <div className="channel-details-container">
                 <h2 className="channel-name">
-                  Sidmfkid
+                  {currentContent.channel}
                   <span>
                     <img src={VerifiedIcon} alt="Verified Icon"></img>
                   </span>
@@ -198,25 +216,25 @@ function Watch(props) {
               </div>
             </div>
             <Comment
-              SidmfkidAvi={SidmfkidAvi}
+              SidmfkidAvi="https://source.unsplash.com/random/300×300/?fruit"
               LikeIcon={LikeIcon}
               DislikeIcon={DislikeIcon}
               DownIcon={DownIcon}
             />
             <Comment
-              SidmfkidAvi={SidmfkidAvi}
+              SidmfkidAvi="https://source.unsplash.com/random/300×300/?girls"
               LikeIcon={LikeIcon}
               DislikeIcon={DislikeIcon}
               DownIcon={DownIcon}
             />
             <Comment
-              SidmfkidAvi={SidmfkidAvi}
+              SidmfkidAvi="https://source.unsplash.com/random/300×300/?city"
               LikeIcon={LikeIcon}
               DislikeIcon={DislikeIcon}
               DownIcon={DownIcon}
             />
             <Comment
-              SidmfkidAvi={SidmfkidAvi}
+              SidmfkidAvi="https://source.unsplash.com/random/300×300/?computer"
               LikeIcon={LikeIcon}
               DislikeIcon={DislikeIcon}
               DownIcon={DownIcon}
@@ -230,6 +248,7 @@ function Watch(props) {
               key="QuickBarWatch"
               onChangeHandler={filterChangeHandler}
               cards={cardContent}
+              step={props.currentStep}
             />
             {cards}
           </div>

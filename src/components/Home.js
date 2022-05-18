@@ -9,18 +9,23 @@ import { useRef, useState } from "react";
 
 function Home(props) {
   const home = useRef(null);
+  const focusedElement = useRef(null);
+  const pillElement = useRef(null);
+  const cardContent = props.cardContent;
   const [filteredTag, setFilter] = useState("");
+  const handleModalClick = props.handleModalClick;
+  const currentStep = props.currentStep;
+
+  // Filter Video Cards
   const filterChangeHandler = (selectedFilter) => {
     setFilter(selectedFilter);
   };
-
-  const cardContent = props.cardContent;
-
   const filteredCards = cardContent.filter((card) => {
     return card.tag === filteredTag;
   });
   let cards = cardContent.map((card) => (
     <HomeCard
+      ref={focusedElement}
       key={card.title}
       title={card.title}
       channel={card.channel}
@@ -28,6 +33,7 @@ function Home(props) {
       postImage={card.postImage}
       channelImage={card.channelImage}
       tag={card.tag}
+      step={currentStep}
     />
   ));
 
@@ -58,18 +64,32 @@ function Home(props) {
     ));
   }
 
-  console.log(home);
   return (
     <>
-      <Modal ArrowIcon={ArrowIcon} />
+      <Modal
+        step={currentStep}
+        ArrowIcon={ArrowIcon}
+        onModalClick={handleModalClick}
+        position={focusedElement.current}
+      />
       <div ref={home} className="home">
         <QuickBar
+          ref={pillElement}
+          step={currentStep}
           key="QuickBarHome"
           cards={cardContent}
           onChangeHandler={filterChangeHandler}
         />
         <div className="home__content">
-          <div className="home__content-grid">{cards}</div>
+          <div
+            className={
+              currentStep > 1 || currentStep.index > 1
+                ? `home__content-grid step-${currentStep.index}`
+                : "home__content-grid"
+            }
+          >
+            {cards}
+          </div>
         </div>
       </div>
     </>

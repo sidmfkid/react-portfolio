@@ -75,6 +75,10 @@
 .home .quick-wrapper .quick-bar__pill-container form .pill-wrapper {
   margin-left: .8rem;
   background-color: transparent;
+  outline: 0px solid white;
+  outline-offset: 0px;
+  border-radius: 5rem;
+  transition: all .3s ease-in-out;
 }
 
 .home .quick-wrapper .quick-bar__pill-container form .pill-wrapper:nth-of-type(1) {
@@ -106,6 +110,13 @@
 
 .home .quick-wrapper .quick-bar__pill-container form .pill-wrapper input:checked ~ .pill span {
   color: #3e3e3e;
+}
+
+.home .quick-wrapper .quick-bar__pill-container form .pill-wrapper.focused {
+  transition: all .3s ease-in-out;
+  outline-offset: 3px;
+  outline: 3px solid white;
+  border-radius: 5rem;
 }
 
 .quick-wrapper {

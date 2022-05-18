@@ -30,6 +30,54 @@ import "./css/App.css";
 function App() {
   const [isToggled, menuToggler] = useState(false);
   const [isTagToggled, tagToggler] = useState("");
+  const [currentStep, setStep] = useState(0);
+
+  const steps = [
+    {
+      heading: "Welcome to Sidtube",
+      subheading: "Let me show you around the place.",
+    },
+    {
+      heading: "Before We Get Started",
+      subheading: "This Portfolio a work in progress",
+    },
+    {
+      heading: "",
+      subheading:
+        "Each thumbnail will take you to a page where (eventually)you will be able to watch a video made by me covering the project/topic",
+    },
+    {
+      heading: "",
+      subheading:
+        "Here we have a way foryou to filter by tag. This way you can find exactly what you’re looking for.",
+    },
+    {
+      heading: "",
+      subheading: "You can also use this side menu to filter by tag",
+    },
+    {
+      heading: "",
+      subheading:
+        "These icons have no functionality at this time and sole purpose is aesthetics",
+    },
+    {
+      heading: "",
+      subheading:
+        "The reason I did a remake of youtube for my portfolio is because it has been a valuable resource to me as someone self taught.",
+    },
+  ];
+
+  const nextStep = steps.filter((step) => {
+    return step.index + 1 === currentStep;
+  });
+
+  const handleModalClick = (event) => {
+    setStep({
+      step: steps[Number(event.target.attributes[0].value) + 1],
+      index: Number(event.target.attributes[0].value) + 1,
+    });
+    console.log(currentStep, event, nextStep);
+  };
 
   const icons = [
     {
@@ -109,6 +157,29 @@ function App() {
     },
   ];
 
+  const handleize = function (str) {
+    str = str.toLowerCase();
+
+    var toReplace = ['"', "'", "\\", "(", ")", "[", "]"];
+
+    // For the old browsers
+    for (var i = 0; i < toReplace.length; ++i) {
+      str = str.replace(toReplace[i], "");
+    }
+
+    str = str.replace(/\W+/g, "-");
+
+    if (str.charAt(str.length - 1) == "-") {
+      str = str.replace(/-+\z/, "");
+    }
+
+    if (str.charAt(0) == "-") {
+      str = str.replace(/\A-+/, "");
+    }
+
+    return str;
+  };
+
   const toggle = () => {
     menuToggler((prev) => !prev);
     console.log(isToggled);
@@ -120,19 +191,28 @@ function App() {
 
   return (
     <>
-   
-      <Nav isToggled={isToggled} menuToggler={toggle} />
-      <SideMenu isExpanded={isToggled} icons={icons} />
+      <Nav
+        currentStep={currentStep}
+        isToggled={isToggled}
+        menuToggler={toggle}
+      />
+      <SideMenu
+        currentStep={currentStep}
+        isExpanded={isToggled}
+        icons={icons}
+      />
       <Routes>
         <Route
           exact
-          path="/watch"
+          path="/watch/:Id"
           element={
             <Watch
+              handleize={handleize}
               cardContent={cardContent}
               isTagToggled={isTagToggled}
               tagToggler={toggleTag}
               menuExpanded={isToggled}
+              currentStep={currentStep}
             />
           }
         />
@@ -140,6 +220,8 @@ function App() {
           path="/"
           element={
             <Home
+              handleModalClick={handleModalClick}
+              currentStep={currentStep}
               cardContent={cardContent}
               isTagToggled={isTagToggled}
               tagToggler={toggleTag}

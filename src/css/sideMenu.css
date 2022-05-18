@@ -6,7 +6,12 @@
   width: 7.2rem;
   height: 100%;
   background-color: #272727;
-  transition: width .3s ease-in-out;
+  transition: width outline .3s ease-in-out;
+}
+
+.sidebar.focused {
+  outline: 4px white solid;
+  transition: outline .3s ease-in-out;
 }
 
 .sidebar.show {

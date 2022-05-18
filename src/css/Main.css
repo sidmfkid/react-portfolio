@@ -625,6 +625,7 @@
 }
 
 .main__content-right__content--thumb-wrapper {
+  text-decoration: none;
   margin-top: 1.4rem;
   margin-left: 1.8rem;
   width: 100%;

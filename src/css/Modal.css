@@ -12,7 +12,12 @@
   z-index: 20;
 }
 
+.back-drop.hide {
+  display: none;
+}
+
 .modal {
+  transition: all .4s ease-in-out;
   position: absolute;
   top: 40vh;
   left: 40vw;
@@ -21,15 +26,16 @@
   max-width: 52rem;
   background-color: #3B3B3B;
   padding: 2.4rem 3.2rem;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 4px 13px;
-          box-shadow: rgba(0, 0, 0, 0.25) 0 4px 13px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 4px 13px;
   border-radius: 1rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 1.8rem;
+}
+
+.modal.step-2 {
+  top: 20vh;
+  left: 40vw;
 }
 
 .modal-heading span {
@@ -42,24 +48,31 @@
   font-weight: 400;
 }
 
+.modal-button {
+  position: relative;
+}
+
 .modal-button button {
-  cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  position: relative;
+  z-index: 2;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   background: none;
+  cursor: pointer;
   border: none;
 }
 
 .modal-button button span {
+  position: relative;
+  z-index: -1;
   font-size: 3.2rem;
   display: block;
   margin-right: 1rem;
+}
+
+.modal-button button img {
+  position: relative;
+  z-index: -1;
 }
 /*# sourceMappingURL=Modal.css.map */

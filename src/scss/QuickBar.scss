@@ -75,9 +75,14 @@
                     .pill-wrapper{
                         margin-left: .8rem;
                         background-color: transparent;
+                        outline: 0px solid white;
+                        outline-offset: 0px;
+                        border-radius: 5rem;
+
                         &:nth-of-type(1){
                             margin-left: 0;
                         }
+                        transition: all .3s ease-in-out;
                     input{
                         display: none;
                     }
@@ -100,6 +105,14 @@
                         span{
                             color: #3e3e3e;
                         }
+                    }
+                    &.focused {
+                        transition: all .3s ease-in-out;
+
+                        outline-offset: 3px;
+                        outline: 3px solid white;
+                        border-radius: 5rem;
+
                     }
                 }
                 }

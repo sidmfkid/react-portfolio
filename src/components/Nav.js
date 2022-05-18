@@ -21,7 +21,13 @@ function Nav(props) {
   // }
 
   return (
-    <header className="nav-container">
+    <header
+      className={
+        props.currentStep.index === 5
+          ? "nav-container focused"
+          : "nav-container"
+      }
+    >
       <div className="nav-container__content">
         <div className="nav-container__content-right">
           <MenuButton toggle={toggle} isToggled={isToggled} />

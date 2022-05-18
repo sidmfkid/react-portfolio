@@ -9,8 +9,12 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.184);
     z-index: 20;
+    &.hide{
+display: none;
+    }
 }
 .modal{
+    transition: all .4s ease-in-out;
     position: absolute;
     top: 40vh;
     left: 40vw;
@@ -24,6 +28,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1.8rem;
+    &.step-2{
+        top: 20vh;
+        left: 40vw;
+    }
     &-heading{
         span{
         font-size: 4rem;
@@ -37,18 +45,28 @@
         }
     }
     &-button{
+        position: relative;
 
         button{
-            cursor: pointer;
+            position: relative;
+            z-index: 2;
             display: flex;
             justify-content: center;
             align-items: center;
             background: none;
+        cursor: pointer;
+
             border: none;
         span{
+            position: relative;
+            z-index: -1;
             font-size: 3.2rem;
             display: block;
             margin-right: 1rem;
+        }
+        img{
+            position: relative;
+            z-index: -1;
         }
     }
     }

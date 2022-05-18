@@ -10,12 +10,16 @@ const bodyParser = require("body-parser");
 const MongoStore = require("connect-mongo");
 const Channel = require("./models/channel");
 const Post = require("./models/post");
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 80;
 app.use(cors());
 const dbUrl = "mongodb://localhost:27017/portfolio" || process.env.DB_URL;
 
 connectDB().catch((err) => console.log(err));
-
+const publicPath = path.join(__dirname, "..", "build");
+app.use(express.static(publicPath));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(bodyParser.json());
 const seedChannels = [
   {
     name: "Sidmfkid",
@@ -91,8 +95,8 @@ seedDB().then(() => {
 
 app.use(morgan("tiny"));
 
-app.get("/", function (req, res) {
-  console.log("Home");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(publicPath, "index.html"));
 });
 
 const server = app.listen(port, () => {

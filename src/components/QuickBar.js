@@ -1,10 +1,10 @@
 import ChevronRightIcon from "../Menu/ChevronRightIcon.svg";
 import ChevronLeftIcon from "../Menu/ChevronLeftIcon.svg";
-import { useRef } from "react";
+import React, { useRef, forwardRef } from "react";
 import "../css/QuickBar.css";
 import Pill from "./Pill";
 
-function QuickBar(props) {
+const QuickBar = React.forwardRef((props, ref) => {
   const quickBar = useRef(null);
   const cards = props.cards;
 
@@ -18,9 +18,9 @@ function QuickBar(props) {
     props.onChangeHandler(event.target.value);
   };
 
-  const allcards = allTags.map((tag) => {
+  let allcards = allTags.map((tag) => {
     return (
-      <div className="pill-wrapper">
+      <div ref={ref} className="pill-wrapper">
         <input
           onChange={filterChangeHandler}
           name="quickBarFilter"
@@ -34,7 +34,44 @@ function QuickBar(props) {
       </div>
     );
   });
-  console.log(allcards, cards);
+
+  if (props.step.index === 3) {
+    allcards = allTags.map((tag) => {
+      return (
+        <div ref={ref} className="pill-wrapper focused">
+          <input
+            onChange={filterChangeHandler}
+            name="quickBarFilter"
+            type="radio"
+            value={tag}
+            id={"pill" + tag}
+          ></input>
+          <label className="pill" for={"pill" + tag}>
+            <span>{tag}</span>
+          </label>
+        </div>
+      );
+    });
+  }
+  if (props.step.index > 6) {
+    allcards = allTags.map((tag) => {
+      return (
+        <div ref={ref} className="pill-wrapper">
+          <input
+            onChange={filterChangeHandler}
+            name="quickBarFilter"
+            type="radio"
+            value={tag}
+            id={"pill" + tag}
+          ></input>
+          <label className="pill" for={"pill" + tag}>
+            <span>{tag}</span>
+          </label>
+        </div>
+      );
+    });
+  }
+  // console.log(allcards, cards);
 
   function scrollSmoothRight(e) {
     console.log(quickBar, e.target);
@@ -62,7 +99,11 @@ function QuickBar(props) {
       <div ref={quickBar} className="quick-bar">
         <div className="quick-bar__pill-container">
           <form value={props.selected} id="quickBar">
-            <div className="pill-wrapper">
+            <div
+              className={
+                props.step.index === 3 ? "pill-wrapper focused" : "pill-wrapper"
+              }
+            >
               <input
                 onChange={filterChangeHandler}
                 name="quickBarFilter"
@@ -87,6 +128,6 @@ function QuickBar(props) {
       </div>
     </div>
   );
-}
+});
 
 export default QuickBar;
