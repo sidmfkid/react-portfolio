@@ -76,4 +76,11 @@
         }
     }
     }
+    @include media-tablet {
+        left: -7.2rem;
+        transition: all .3s ease-in-out;
+        &.show{
+            left: 0rem;
+        }
+    }
 }

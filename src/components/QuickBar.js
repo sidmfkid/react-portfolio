@@ -1,7 +1,7 @@
 import ChevronRightIcon from "../Menu/ChevronRightIcon.svg";
 import ChevronLeftIcon from "../Menu/ChevronLeftIcon.svg";
 import React, { useRef, forwardRef } from "react";
-import "../css/QuickBar.css";
+// import "../css/QuickBar.css";
 import Pill from "./Pill";
 
 const QuickBar = React.forwardRef((props, ref) => {

@@ -198,4 +198,14 @@
             }
         }
     }
+    @include media-tablet{
+        &__content{
+            &-right{
+                min-width: 15rem;
+            }
+            &-center{
+                display: none;
+            }
+        }
+    }
 }

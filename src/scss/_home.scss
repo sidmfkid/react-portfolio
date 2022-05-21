@@ -109,4 +109,7 @@
         }
         }
     }
+    @include media-tablet{
+        padding-left: 0rem;
+    }
 }

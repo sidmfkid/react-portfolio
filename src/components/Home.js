@@ -1,5 +1,5 @@
-import "../css/Home.css";
-import "../css/Modal.css";
+// import "../css/Home.css";
+// import "../css/Modal.css";
 import HomeCard from "./HomeCard";
 import QuickBar from "../components/QuickBar";
 import Modal from "../components/UI/Modal";

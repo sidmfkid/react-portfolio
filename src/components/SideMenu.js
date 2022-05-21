@@ -1,4 +1,4 @@
-import "../css/sideMenu.css";
+// import "../css/sideMenu.css";
 import SideMenuLink from "./SideMenuLink";
 
 function SideMenu(props) {

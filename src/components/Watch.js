@@ -1,4 +1,4 @@
-import "../css/Main.css";
+// import "../css/Main.css";
 import PlayIcon from "../Menu/Video/PlayIcon.svg";
 import NextIcon from "../Menu/Video/NextIcon.svg";
 import VolumeIcon from "../Menu/Video/VolumeIcon.svg";

@@ -7,7 +7,7 @@ import aviIcon from "../Menu/aviIcon.svg";
 import squareMenuIcon from "../Menu/squareMenuIcon.svg";
 import MenuButton from "./MenuButton";
 import React from "react";
-import "../css/nav.css";
+// import "../css/nav.css";
 
 function Nav(props) {
   const toggle = props.menuToggler;

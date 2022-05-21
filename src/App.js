@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./css/styles.css";
 import SideMenu from "./components/SideMenu";
 import Watch from "./components/Watch";
 import Nav from "./components/Nav.js";
