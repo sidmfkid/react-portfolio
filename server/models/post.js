@@ -1,18 +1,22 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
   channel: {
-    type: Schema.Types.ObjectId,
-    ref: "Channel",
-  },
-  images: [
-    {
+    name: {
       type: String,
     },
-  ],
+    aviUrl: {
+      type: String,
+    },
+  },
+  videoUrl: {
+    type: String,
+  },
+  info: { type: String },
+  likes: Number,
+  info: String,
   title: String,
-  datePosted: String,
   views: Number,
   comments: [
     {
@@ -20,8 +24,14 @@ const postSchema = new Schema({
       ref: "Comment",
     },
   ],
+  thumbnail: String,
+  tags: [{ type: String }],
+  video: String,
+  github: String,
+  link: String,
+  details: String,
 });
 
 const Post = mongoose.model("Post", postSchema);
 
-module.exports = Post;
+export default Post;

@@ -1,20 +1,28 @@
-require("dotenv").config();
-
-const express = require("express");
-const app = express();
-// const cors = require("cors");
-const path = require("path");
-const morgan = require("morgan");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const MongoStore = require("connect-mongo");
-const Channel = require("./models/channel");
-const Post = require("./models/post");
-const port = process.env.PORT || 80;
+import express from "express";
+import dotenv from "dotenv";
+import path from "path";
+import morgan from "morgan";
+import bodyParser from "body-parser";
+import MongoStore from "connect-mongo";
+import Channel from "./models/channel";
+import Post from "./models/post";
+import devBundle from "./devBundle.js";
+import seedData from "./../seedData";
 // app.use(cors());
-const dbUrl = "mongodb://localhost:27017/portfolio" || process.env.DB_URL;
+import mongoose from "mongoose";
 
+import template from "./../template";
+dotenv.config();
+const app = express();
+
+const { DB_URL, PORT } = process.env;
+const dbUrl = DB_URL || "mongodb://localhost:27017/portfolio";
 connectDB().catch((err) => console.log(err));
+
+devBundle.compile(app);
+const CURRENT_WORKING_DIR = process.cwd();
+app.use("/dist", express.static(path.join(CURRENT_WORKING_DIR, "dist")));
+
 const publicPath = path.join(__dirname, "..", "build");
 app.use(express.static(publicPath));
 app.use(express.urlencoded({ extended: true }));
@@ -83,22 +91,54 @@ db.on("error", (error) => console.error(error));
 db.once("open", () => console.log("open"));
 
 const seedDB = async () => {
+  const newData = await Post.create(seedData);
+  console.log(newData);
   //   await Channel.deleteMany({});
   //   await Post.deleteMany({});
   //   await Channel.insertMany(seedChannels);
   //   await Post.insertMany(seedPosts);
 };
 
-seedDB().then(() => {
-  mongoose.connection.close();
-});
+// seedDB();
 
 app.use(morgan("tiny"));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(publicPath, "index.html"));
+app.get("/posts", async (req, res) => {
+  try {
+    const posts = await Post.find({});
+    res.json({ posts });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-const server = app.listen(port, () => {
-  console.log(`app started on ${port}`);
+app.get("/posts/:id/", async (req, res) => {
+  try {
+    let id = req.params.id;
+
+    const post = await Post.findById(id);
+    res.json({ post });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.get("/home", (req, res) => {
+  res.send(template());
+});
+
+app.get("/watch", (req, res) => {
+  res.send(template());
+});
+
+app.get("/watch/:id", async (req, res) => {
+  res.send(template());
+});
+
+app.get("*", (req, res) => {
+  res.send(template());
+});
+
+const server = app.listen(PORT, () => {
+  console.log(`app started on ${PORT}`);
 });
