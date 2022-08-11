@@ -15,8 +15,9 @@ import template from "./../template";
 dotenv.config();
 const app = express();
 
-const { DB_URL, PORT } = process.env;
-const dbUrl = DB_URL || "mongodb://localhost:27017/portfolio";
+const { DB_URL, PORT, NODE_ENV } = process.env;
+const dbUrl =
+  NODE_ENV !== "development" ? DB_URL : "mongodb://localhost:27017/portfolio";
 connectDB().catch((err) => console.log(err));
 
 devBundle.compile(app);
